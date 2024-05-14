@@ -116,8 +116,11 @@ const stages = [
 ];
 let currentStageIndex = 0;
 let currentAnswers = [];
+let startedGameOn = 0;
 
 async function beginTest() {
+	startedGameOn = Date.now();
+
 	const beginContainerEl = document.getElementById("beginContainer");
 	beginContainerEl.style.display = "none";
 
@@ -203,6 +206,9 @@ function answerRizz() {
 }
 
 async function endGame() {
+	const endedGameOn = Date.now();
+	const diff = endedGameOn - startedGameOn;
+
 	const endGameOverlayEl = document.getElementById("endGameOverlay");
 	endGameOverlayEl.style.display = "flex";
 
@@ -210,6 +216,13 @@ async function endGame() {
 
 	const endGameTextEl = document.getElementById("endGameText");
 	endGameTextEl.style.display = "inline";
+
+	setTimeout(() => {
+		const timerText = new Date(diff).toISOString().slice(11, 19);
+
+		const endGameTimerEl = document.getElementById("endGameTimer");
+		endGameTimerEl.innerText = timerText;
+	}, 1500);
 
 	await playSound("end2");
 }

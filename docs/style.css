@@ -234,7 +234,7 @@ button {
     margin-left: 8px;
     margin-right: 8px;
 
-    transition: transform 0.1s ease;
+    transition: transform 0.1s ease, background-color 0.1s ease;
 }
 
 button:hover {
@@ -254,6 +254,8 @@ button:hover {
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
+    gap: 18px;
 
     letter-spacing: .25rem;
     font-weight: bold;
@@ -264,4 +266,8 @@ button:hover {
 
 .endGameOverlay>span {
     filter: blur(0.06rem);
+}
+
+.endGameTimer {
+    font-size: 16px;
 }
